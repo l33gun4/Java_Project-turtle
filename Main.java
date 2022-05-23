@@ -1,10 +1,9 @@
-import java.util.Random;
 import java.util.Scanner;
 
 class User{
     String name;
     String car_number;
-    int who; //true면 학교 관련인 | false면 외부인
+    int who; //0이 학생, 1이 교수진, 2가 외부인
     User(String name, String car_number, int who){
         this.name = name;
         this.car_number = car_number;
@@ -70,6 +69,7 @@ class Calc{
 
     void printFee(String car_number){
         System.out.println("차 번호 "+car_number+"의 정산할 금액은 "+(this.fee-this.discount)+"입니다.");
+        this.fee=this.fee-this.discount;
     }
 }
 
@@ -80,9 +80,11 @@ public class Main {
         String name, car_number;
         int who, time;
 
-        time = (int)Math.random()*10+1;
+        time = (int)(Math.random()*10)+1;
+
 
         System.out.println("이름, 차번호, 소속을 입력해주세요");
+        System.out.println("(소속은 학생은 0, 교수진은 1, 외부인은 2로 입력해주세요!)");
         name = s.next();
         car_number = s.next();
         who = s.nextInt();
